@@ -15,14 +15,14 @@ import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './config/fbconfig'
 
 // 2 Need to add a root reducer
-const store = createStore(rootReducer,
+const store = createStore(rootReducer)
     // Use compose to add more than 1 middleware
     compose(
         applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
         reactReduxFirebase(fbConfig),
         reduxFirestore(fbConfig),
         )
-    );
+    ;
 
 // 4. wrap with provider
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
